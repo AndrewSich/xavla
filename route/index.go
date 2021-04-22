@@ -8,7 +8,7 @@ import (
 
 func HandlerIndex(w http.ResponseWriter, r *http.Request) {
   // Merge and build folder and files to a path
-  var filePath = path.Join("views", "index.html")
+  var filePath = path.Join("views", "welcome.html")
   var tmpl, err = template.ParseFiles(filePath)
   if err != nil {
     http.Error(w, err.Error(), http.StatusInternalServerError)
