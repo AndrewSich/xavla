@@ -14,6 +14,11 @@ func main() {
   // This a routing function
   http.HandleFunc("/", route.HandlerIndex)
 
+  // This a routing static files
+  http.Handle("/static/",
+    http.StripPrefix("/static/",
+      http.FileServer(http.Dir("public"))))
+
   var address = ":0"
   fmt.Printf("Server on start running")
   err := http.ListenAndServe(address, nil)
