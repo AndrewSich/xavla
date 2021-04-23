@@ -1,9 +1,8 @@
 package main
 
 import (
-  "fmt"
   "net/http"
-  "xavla/route"
+  "xavla/system"
 )
 
 func main() {
@@ -12,17 +11,13 @@ func main() {
   // })
 
   // This a routing function
-  http.HandleFunc("/", route.HandlerIndex)
+  http.HandleFunc("/", system.HandlerIndex)
 
-  // This a routing static files
+  // Static routing system
   http.Handle("/static/",
     http.StripPrefix("/static/",
       http.FileServer(http.Dir("public"))))
 
   var address = ":0"
-  fmt.Printf("Server on start running")
-  err := http.ListenAndServe(address, nil)
-  if err != nil {
-    fmt.Println(err.Error())
-  }
-}
+  system.Server(address)
+}go 
