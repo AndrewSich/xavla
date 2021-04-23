@@ -5,7 +5,12 @@ import (
   "net/http"
 )
 
-func Server(port string) {
+// This a Core Server Xavla
+func StartAndRunServer(port string) {
+  // add routing base
+  routingBase()
+
+  // running server
   fmt.Printf("Server start running on\n")
   fmt.Printf("[+] success! \n")
   err := http.ListenAndServe(port, nil)
